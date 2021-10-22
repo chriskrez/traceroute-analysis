@@ -192,6 +192,7 @@ class Traceroute(object):
                     'rtt': hop['rtt'],
                     'latitude': location['latitude'],
                     'longitude': location['longitude'],
+                    'country': location['country']
                 })
         return geocoded_hops
 
