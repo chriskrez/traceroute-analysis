@@ -190,8 +190,8 @@ class Traceroute(object):
                     'hostname': hop['hostname'],
                     'ip_address': hop['ip_address'],
                     'rtt': hop['rtt'],
-                    'latitude': location['latitude'],
-                    'longitude': location['longitude'],
+                    'latitude': location['lat'],
+                    'longitude': location['lon'],
                     'country': location['country']
                 })
         return geocoded_hops
@@ -201,13 +201,12 @@ class Traceroute(object):
         Returns geolocation information for the given IP address.
         """
         location = None
-        url = "http://dazzlepod.com/ip/{}.json".format(ip_address)
+        url = "http://ip-api.com/json/{}".format(ip_address)
         status_code, json_data = self.urlopen(url)
 
         if status_code == 200 and json_data:
             tmp_location = json.loads(json_data)
-
-            if 'latitude' in tmp_location and 'longitude' in tmp_location:
+            if 'lat' in tmp_location and 'lon' in tmp_location:
                 location = tmp_location
         
         return location
