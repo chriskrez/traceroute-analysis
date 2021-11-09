@@ -9,11 +9,21 @@ from traceroute import Traceroute
 ip = sys.argv[1] if ipv4.validate_ip(sys.argv[1]) else socket.gethostbyname(sys.argv[1])
 traceroute = Traceroute(ip, country="LO")
 hops = traceroute.traceroute()
-print(hops)
 
-df = pd.DataFrame(columns=['hop', 'latitude', 'longitude'])
 for hop in hops:
-    df = df.append({'hop': hop["hop_num"], 'latitude': hop["latitude"], 'longitude': hop["longitude"]}, ignore_index=True)
+    print("Hop number: ", hop["hop_num"])
+    print("IP address: ", hop["ip_address"])
+    print("Country: ", hop["country"])
+    print("RTT: ", hop["rtt"])
+    print()
+
+df = pd.DataFrame(columns=['hop', 'latitude', 'longitude', 'country', 'rtt'])
+counter = -1
+for hop in hops:
+    if counter != hop["hop_num"]:
+        df = df.append({'hop': hop["hop_num"], 'latitude': hop["latitude"], 'longitude': hop["longitude"], 'country': hop["country"], 'rtt': hop["rtt"]}, ignore_index=True)
+    counter = hop["hop_num"]
+print(df)
 
 fig = go.Figure()
 fig.add_trace(go.Scattermapbox(
