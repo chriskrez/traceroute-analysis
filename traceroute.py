@@ -77,7 +77,6 @@ class Traceroute(object):
         if not self.no_geo:
             # hop_num, hostname, ip_address, rtt, latitude, longitude
             hops = self.get_geocoded_hops(hops)
-        
         return hops
 
     def get_traceroute_output(self):
@@ -192,7 +191,8 @@ class Traceroute(object):
                     'rtt': hop['rtt'],
                     'latitude': location['lat'],
                     'longitude': location['lon'],
-                    'country': location['country']
+                    'country': location['country'],
+                    'isp': location['isp']
                 })
         return geocoded_hops
 
