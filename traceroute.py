@@ -57,13 +57,13 @@ class Traceroute(object):
         if not os.path.exists(filepath):
             if self.country == "LO":
                 status_code, traceroute = self.execute_cmd(self.source['url'])
+                traceroute = traceroute.decode("utf-8")
             else:
                 status_code, traceroute = self.get_traceroute_output()
             
             if status_code != 0 and status_code != 200:
                 return {'error': status_code}
             
-            traceroute = traceroute.decode("utf-8")
             open(filepath, "w").write(traceroute)
         else:
             traceroute = open(filepath, "r").read()
@@ -192,7 +192,8 @@ class Traceroute(object):
                     'latitude': location['lat'],
                     'longitude': location['lon'],
                     'country': location['country'],
-                    'isp': location['isp']
+                    'isp': location['isp'],
+                    'as': location['as']
                 })
         return geocoded_hops
 
