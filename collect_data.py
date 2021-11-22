@@ -3,6 +3,7 @@ from numpy import inf
 from traceroute import Traceroute
 import json
 import requests
+import time
 
 def read_file(country):
     data = []
@@ -17,7 +18,12 @@ def read_file(country):
     write_file(data, country)
 
 def collect_info(ip, hops):
-    dest_info = requests.get("http://ip-api.com/json/{}".format(ip))
+    while True:
+        dest_info = requests.get("http://ip-api.com/json/{}".format(ip))
+        if int(dest_info.headers["X-Ttl"]) > 0:
+            time.sleep(int(dest_info.headers["X-Rl"]))
+            break
+    
     info = {
         "dest_ip": ip,
         "dest_country": dest_info.json()["country"],
