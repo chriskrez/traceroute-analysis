@@ -16,7 +16,7 @@ def initialize_dataframe(hops):
                             'Longitude': hop["longitude"],
                             'Country': hop["country"],
                             'ISP': hop["isp"],
-                            'AS': hop["as"].split()[0],
+                            'AS': hop["as"].split()[0] if len(hop["as"]) > 0 else "",
                             'RTT': hop["rtt"]},
                             ignore_index=True)
         counter = hop["hop_num"]
