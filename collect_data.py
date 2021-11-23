@@ -28,18 +28,28 @@ def collect_info(ip, hops):
         "dest_ip": ip,
         "dest_country": dest_info.json()["country"],
         "total_hops": hops[-1]["hop_num"],
+        "success": "yes" if ip == hops[-1]["ip_address"] else "no",
+        "ips": [],
         "countries": [],
         "rtt": [],
         "as": [],
-        "isp": []
+        "isp": [],
+        "detour": ""
     }
-                
+
+    counter = -1           
     for hop in hops:
-        if len(info["countries"]) == 0 or info["countries"][-1] != hop["country"]:
-            info["countries"].append(hop["country"])
-        info["rtt"].append(hop["rtt"])
-        info["as"].append(hop["as"])
-        info["isp"].append(hop["isp"])
+        if counter != hop["hop_num"]:
+            info["ips"].append(hop["ip_address"])
+            if len(info["countries"]) == 0 or info["countries"][-1] != hop["country"]:
+                info["countries"].append(hop["country"])
+        
+            info["rtt"].append(hop["rtt"])
+            info["as"].append(hop["as"])
+            info["isp"].append(hop["isp"])
+        counter = hop["hop_num"]
+    
+    info["detour"] = "yes" if len(set(info["countries"])) < len(info["countries"]) else "no"
 
     return info
 
