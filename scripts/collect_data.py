@@ -20,10 +20,10 @@ def read_file(country):
 def collect_info(ip, hops):
     while True:
         dest_info = requests.get(f"http://ip-api.com/json/{ip}")
-        if int(dest_info.headers["X-Ttl"]) == 1:
-            print(dest_info.headers["X-Rl"])
-            time.sleep(int(dest_info.headers["X-Rl"]))
-        break
+        if int(dest_info.headers["X-Rl"]) == 0:
+            time.sleep(int(dest_info.headers["X-Ttl"]))
+        else:
+            break
     
     info = {
         "dest_ip": ip,
