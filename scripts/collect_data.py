@@ -7,7 +7,7 @@ import time
 
 def read_file(country):
     data = []
-    with open("example_ips.txt") as file_object:
+    with open("ips.txt") as file_object:
         for line in file_object:
             if line != "\n":
                 ip = line.rstrip()
@@ -19,10 +19,11 @@ def read_file(country):
 
 def collect_info(ip, hops):
     while True:
-        dest_info = requests.get("http://ip-api.com/json/{}".format(ip))
-        if int(dest_info.headers["X-Ttl"]) > 0:
+        dest_info = requests.get(f"http://ip-api.com/json/{ip}")
+        if int(dest_info.headers["X-Ttl"]) == 1:
+            print(dest_info.headers["X-Rl"])
             time.sleep(int(dest_info.headers["X-Rl"]))
-            break
+        break
     
     info = {
         "dest_ip": ip,
@@ -54,7 +55,7 @@ def collect_info(ip, hops):
     return info
 
 def write_file(data, country):
-    pathfile = "data/" + country + "-" + str(date.today().strftime("%d-%m-%Y")) + "-" + str(datetime.now().strftime("%H-%M")) + ".json"
+    pathfile = "../data/" + country + "-" + str(date.today().strftime("%d-%m-%Y")) + "-" + str(datetime.now().strftime("%H-%M")) + ".json"
     with open(pathfile, 'w') as f:
         json.dump(data, f)
 

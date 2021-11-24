@@ -67,6 +67,7 @@ class Traceroute(object):
             open(filepath, "w").write(traceroute)
         else:
             traceroute = open(filepath, "r").read()
+        print(traceroute)
 
         # hop_num, hosts
         hops = self.get_hops(traceroute)
