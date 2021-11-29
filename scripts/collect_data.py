@@ -29,8 +29,8 @@ def collect_info(ip, hops):
     info = {
         "dest_ip": ip,
         "dest_country": dest_info.json()["country"] if len(dest_info.json()["country"]) > 0 else "",
-        "total_hops": hops[-1]["hop_num"] if hops[-1]["hop_num"] > 0 else "",
-        "success": "yes" if ip == hops[-1]["ip_address"] else "no",
+        "total_hops": hops[-1]["hop_num"] if len(hops) > 0 else "",
+        "success": "yes" if len(hops) > 0 and ip == hops[-1]["ip_address"] else "no",
         "ips": [],
         "countries": [],
         "rtt": [],
