@@ -3,6 +3,7 @@ from numpy import inf
 from traceroute import Traceroute
 import json
 import requests
+import sys
 import time
 
 def read_file(country):
@@ -28,7 +29,7 @@ def collect_info(ip, hops):
     info = {
         "dest_ip": ip,
         "dest_country": dest_info.json()["country"] if len(dest_info.json()["country"]) > 0 else "",
-        "total_hops": hops[-1]["hop_num"],
+        "total_hops": hops[-1]["hop_num"] if hops[-1]["hop_num"] > 0 else "",
         "success": "yes" if ip == hops[-1]["ip_address"] else "no",
         "ips": [],
         "countries": [],
@@ -42,15 +43,13 @@ def collect_info(ip, hops):
     for hop in hops:
         if counter != hop["hop_num"]:
             info["ips"].append(hop["ip_address"])
-            if len(info["countries"]) == 0 or info["countries"][-1] != hop["country"]:
-                info["countries"].append(hop["country"])
-        
+            info["countries"].append(hop["country"])
             info["rtt"].append(hop["rtt"])
             info["as"].append(hop["as"])
             info["isp"].append(hop["isp"])
         counter = hop["hop_num"]
     
-    info["detour"] = "yes" if len(set(info["countries"])) < len(info["countries"]) else "no"
+    # info["detour"] = "yes" if len(set(info["countries"])) < len(info["countries"]) else "no"
 
     return info
 
@@ -59,4 +58,5 @@ def write_file(data, country):
     with open(pathfile, 'w') as f:
         json.dump(data, f)
 
-read_file("LO")
+if __name__ == '__main__':
+    read_file(sys.argv[1])
