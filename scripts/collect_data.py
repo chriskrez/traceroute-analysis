@@ -1,3 +1,4 @@
+from calculate_detours import calculate_detours
 from datetime import date, datetime
 from numpy import inf
 from traceroute import Traceroute
@@ -16,6 +17,7 @@ def read_file(country):
                 hops = traceroute.traceroute()
                 info_json = collect_info(ip, hops)
                 data.append(info_json)
+    calculate_detours(data)
     write_file(data, country)
 
 def collect_info(ip, hops):
@@ -48,8 +50,6 @@ def collect_info(ip, hops):
             info["as"].append(hop["as"])
             info["isp"].append(hop["isp"])
         counter = hop["hop_num"]
-    
-    # info["detour"] = "yes" if len(set(info["countries"])) < len(info["countries"]) else "no"
 
     return info
 
