@@ -33,7 +33,7 @@ def read_json(filename):
     return data
 
 def write_data_to_file(data, filepath):
-    filepath = filepath[:-5] + "-updated.json"
+    filepath = filepath[:-5] + ".json"
     with open(filepath, 'w') as f:
         json.dump(data, f)
 
