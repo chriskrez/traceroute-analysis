@@ -1,0 +1,67 @@
+{
+  "Germany": {
+    "CORE-BACKBONE": 1,
+    "NTT America, Inc.": 2,
+    "euNetworks GmbH": 1,
+    "Telia Company AB": 1,
+    "SysEleven GmbH": 1,
+    "TATA Communications": 1,
+    "Hetzner Online GmbH": 1,
+    "RelAix Networks GmbH": 1,
+    "Hosting.de GmbH": 1,
+    "entered_country": 7
+  },
+  "United States": {
+    "TATA COMMUNICATIONS (AMERICA) INC": 3,
+    "Akamai International B.V.": 1,
+    "Cogent Communications": 2,
+    "Amazon Technologies Inc.": 1,
+    "Earthmeta Multimedia Studios": 1,
+    "PacketExchange": 1,
+    "Wave Broadband": 1,
+    "Telia Company AB": 1,
+    "Cloudflare, Inc.": 1,
+    "entered_country": 8
+  },
+  "Cyprus": {
+    "Primetel PLC": 1,
+    "Wavespeed": 1,
+    "WAVESPEED": 1,
+    "Cyprus Telecommunications Authority": 7,
+    "Logosnet Services Limited": 1,
+    "CYTANET - Cyprus Telecommunications Authority": 1,
+    "entered_country": 10
+  },
+  "Egypt": { "TE Data": 4, "Nile Online": 1, "IDSC": 1, "entered_country": 5 },
+  "Iran": {
+    "IRIB (Islamic Republic of Iran Broadcasting)": 2,
+    "Mabna": 1,
+    "Institute for Research in Fundamental Sciences": 1,
+    "DCI": 1,
+    "Ministry of Health, Treatment and Medical Education": 1,
+    "ASIATECH-DC": 1,
+    "entered_country": 6
+  },
+  "Russia": {
+    "Volga Branch of OJSC MegaFon": 1,
+    "Yandex enterprise network": 1,
+    "EDN Sovintel": 1,
+    "Saint Petersburg State University": 1,
+    "entered_country": 3
+  },
+  "North Korea": { "entered_country": 0 },
+  "Vietnam": {
+    "Viettel Group": 3,
+    "Viettel Corporation": 3,
+    "Vietnam Internet Network Information Center": 1,
+    "FPT-STATICIP": 1,
+    "IPLeaselinecustome": 1,
+    "VIETTEL": 1,
+    "HTCHCMC-VNNIC": 1,
+    "SUPERDATA": 1,
+    "CMC Telecom Infrastructure Company": 2,
+    "gamekiemthe": 1,
+    "VTDC": 1,
+    "entered_country": 7
+  }
+}

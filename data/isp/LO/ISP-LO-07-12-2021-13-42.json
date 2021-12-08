@@ -1,0 +1,77 @@
+{
+  "Germany": {
+    "CORE-BACKBONE": 1,
+    "NTT America, Inc.": 1,
+    "euNetworks GmbH": 1,
+    "SysEleven GmbH": 1,
+    "init AG fuer digitale Kommunikation": 1,
+    "Hetzner": 1,
+    "Hetzner Online GmbH": 1,
+    "RelAix Networks GmbH": 1,
+    "Hosting.de GmbH": 1,
+    "1&1 Versatel Deutschland GmbH": 1,
+    "entered_country": 7
+  },
+  "United States": {
+    "Zayo Bandwidth": 7,
+    "Akamai International B.V.": 2,
+    "Cloudflare, Inc.": 2,
+    "PacketExchange": 1,
+    "Wave Broadband": 1,
+    "TATA COMMUNICATIONS (AMERICA) INC": 1,
+    "entered_country": 10
+  },
+  "Cyprus": {
+    "NETWAY": 1,
+    "Primetel PLC": 1,
+    "Wavespeed": 2,
+    "WAVESPEED": 1,
+    "Cyprus Telecommunications Authority": 6,
+    "Logosnet Main": 1,
+    "Logosnet Services Limited": 1,
+    "Cablenet Communication Systems plc": 1,
+    "entered_country": 10
+  },
+  "Egypt": { "TE Data": 4, "IDSC": 2, "Nile Online": 1, "entered_country": 5 },
+  "Iran": {
+    "IRIB (Islamic Republic of Iran Broadcasting)": 4,
+    "Mabna": 2,
+    "Institute for Research in Fundamental Sciences": 1,
+    "Soroush Rasanheh Company Ltd": 1,
+    "SINET": 1,
+    "DCI": 1,
+    "Ministry of Health, Treatment and Medical Education": 1,
+    "ASIATECH-DC": 1,
+    "entered_country": 8
+  },
+  "Russia": {
+    "Rostelecom Nets": 2,
+    "EGOV66": 1,
+    "PJSC MegaFon Europe": 1,
+    "Volga Branch of OJSC MegaFon": 1,
+    "Yandex Oy": 1,
+    "Yandex enterprise network": 1,
+    "RETN.net backbone": 2,
+    "EDN Sovintel": 1,
+    "Saint Petersburg State University": 1,
+    "JSC \"ER-Telecom Holding\"": 1,
+    "JSC \"ER-Telecom Holding\" Moscow branch": 1,
+    "entered_country": 7
+  },
+  "North Korea": { "entered_country": 0 },
+  "Vietnam": {
+    "Viettel Group": 4,
+    "Viettel Corporation": 2,
+    "VietNam Post and Telecom Corporation": 2,
+    "FPT-STATICIP": 1,
+    "IPLeaselinecustome": 1,
+    "VTDC": 2,
+    "VIETTEL": 1,
+    "HTCHCMC-VNNIC": 1,
+    "SUPERDATA": 1,
+    "CMC Telecom Infrastructure Company": 2,
+    "gamekiemthe": 1,
+    "VNG Corporation": 1,
+    "entered_country": 10
+  }
+}

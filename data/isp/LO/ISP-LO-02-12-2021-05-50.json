@@ -1,0 +1,76 @@
+{
+  "Germany": {
+    "CORE-BACKBONE": 1,
+    "NTT America, Inc.": 2,
+    "euNetworks GmbH": 1,
+    "Telia Company AB": 1,
+    "SysEleven GmbH": 1,
+    "init AG fuer digitale Kommunikation": 1,
+    "TATA Communications": 1,
+    "Hetzner Online GmbH": 1,
+    "RelAix Networks GmbH": 1,
+    "Hosting.de GmbH": 1,
+    "Cogent Communications": 1,
+    "1&1 Versatel Deutschland GmbH": 1,
+    "entered_country": 8
+  },
+  "United States": {
+    "TATA COMMUNICATIONS (AMERICA) INC": 4,
+    "Akamai International B.V.": 3,
+    "Cogent Communications": 2,
+    "Amazon Technologies Inc.": 1,
+    "Earthmeta Multimedia Studios": 1,
+    "Cloudflare, Inc.": 2,
+    "Telia Company AB": 1,
+    "entered_country": 9
+  },
+  "Cyprus": {
+    "Primetel PLC": 1,
+    "Wavespeed": 1,
+    "WAVESPEED": 1,
+    "Cyprus Telecommunications Authority": 7,
+    "Logosnet Main": 1,
+    "Logosnet Services Limited": 1,
+    "CYTANET - Cyprus Telecommunications Authority": 1,
+    "entered_country": 10
+  },
+  "Egypt": { "TE Data": 6, "IDSC": 2, "Nile Online": 1, "entered_country": 7 },
+  "Iran": {
+    "IRIB (Islamic Republic of Iran Broadcasting)": 3,
+    "Mabna": 1,
+    "Institute for Research in Fundamental Sciences": 1,
+    "Soroush Rasanheh Company Ltd": 1,
+    "SINET": 1,
+    "DCI": 1,
+    "Ministry of Health, Treatment and Medical Education": 1,
+    "ASIATECH-DC": 1,
+    "entered_country": 7
+  },
+  "Russia": {
+    "Rostelecom Nets": 1,
+    "EGOV66": 1,
+    "Volga Branch of OJSC MegaFon": 1,
+    "Yandex enterprise network": 1,
+    "EDN Sovintel": 1,
+    "Saint Petersburg State University": 1,
+    "JSC \"ER-Telecom Holding\"": 1,
+    "JSC \"ER-Telecom Holding\" Moscow branch": 1,
+    "entered_country": 5
+  },
+  "North Korea": { "entered_country": 0 },
+  "Vietnam": {
+    "Viettel Group": 4,
+    "Viettel Corporation": 3,
+    "Vietnam Internet Network Information Center": 1,
+    "FPT-STATICIP": 1,
+    "IPLeaselinecustome": 1,
+    "VTDC": 2,
+    "VietNam Post and Telecom Corporation": 1,
+    "HTCHCMC-VNNIC": 1,
+    "SUPERDATA": 1,
+    "CMC Telecom Infrastructure Company": 2,
+    "gamekiemthe": 1,
+    "VNG Corporation": 1,
+    "entered_country": 9
+  }
+}
