@@ -30,34 +30,44 @@ def plot_success_rate(data):
     ax.set_ylim([0, 10])
     plt.show()
 
-def gather_isps(data):
+def compare_isps(folder):
     isps = {}
-    counter = 0
-    dest_isps = {}
-    for record in data:
-        dest_country = record["dest_country"]
-        isp_set = set(record["isp"])
+    for file in os.listdir(folder):
+        json_path = os.path.join(folder, file)
+        data = read_json(json_path)
+        for country in data:
+            if country not in isps.keys():
+                isps[country] = {}
+                isps[country]["entered_country"] = 0
             
-        for index, country in enumerate(record["countries"]):
-            if country == dest_country:
-                isp = record["isp"][index]
-                if isp in dest_isps.keys() and isp in isp_set:
-                    dest_isps[isp] += 1
-                    isp_set.remove(isp)
+            record = data[country]
+            isps[country]["entered_country"] += record["entered_country"]
+            
+            for isp in record:
+                if isp == "entered_country": continue
+                if isp in isps[country].keys():
+                    isps[country][isp] += record[isp]
                 else:
-                    dest_isps[isp] = 1
-        
-        if (counter + 1) % 10 == 0:
-            isps[dest_country] = dest_isps
-            dest_isps = {}
-
-        counter += 1
+                    isps[country][isp] = record[isp]
     return isps
 
-def write_isps_to_file(isps, filename):
-    pathfile = "../data/isp/" + "ISP-" + filename[19:]
-    with open(pathfile, 'w') as f:
-        json.dump(isps, f)
+def normalize_isps(isps):
+    for country in isps:
+        record = isps[country]
+        entered = record["entered_country"]
+        for isp in record:
+            if record[isp]:
+                record[isp] = (record[isp] / entered) * 100
+        record.pop("entered_country", None)
+
+    return isps
+
+def print_interesting_isps(isps):
+    for country in isps:
+        record = isps[country]
+        for isp in record:
+            if record[isp] > 40:
+                print(country + " - ISP: " + isp + " - Percentage: " + str(round(record[isp], 2)))
 
 def compare_detours(folder):
     detours = {}
@@ -82,19 +92,19 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Invalid arguments")
         print("Right use: [datafile path || folder path] [operation]")
-        print("Available operations: plot_success, gather_isps, compare_detours")
+        print("Available operations: plot_success, compare_isps, compare_detours")
     
     if sys.argv[2] == "plot_success":
         data = read_json(sys.argv[1])
         success_data = compute_success(data)
         plot_success_rate(success_data)
-    elif sys.argv[2] == "gather_isps":
-        data = read_json(sys.argv[1])
-        isps = gather_isps(data)
-        write_isps_to_file(isps, sys.argv[1])
+    elif sys.argv[2] == "compare_isps":
+        isps = compare_isps(sys.argv[1])
+        normalized = normalize_isps(isps)
+        print_interesting_isps(normalized)
     elif sys.argv[2] == "compare_detours":
         compare_detours(sys.argv[1])
     else:
         print("Invalid arguments")
         print("Right use: [datafile path || folder path] [operation]")
-        print("Available operations: plot_success, gather_isps, compare_detours")
+        print("Available operations: plot_success, compare_isps, compare_detours")
