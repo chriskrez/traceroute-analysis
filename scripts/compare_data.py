@@ -1,5 +1,6 @@
 import json
 import matplotlib.pyplot as plt
+import os
 import sys
 
 def read_json(filename):
@@ -58,20 +59,42 @@ def write_isps_to_file(isps, filename):
     with open(pathfile, 'w') as f:
         json.dump(isps, f)
 
+def compare_detours(folder):
+    detours = {}
+    for file in os.listdir(folder):
+        json_path = os.path.join(folder, file)
+        data = read_json(json_path)
+        for record in data:
+            ip = record["dest_ip"]
+            country = record["dest_country"]
+            if record["detour"] == "yes":
+                if ip in detours.keys():
+                    detours[ip]["times"] += 1
+                else:
+                    detours[ip] = {}
+                    detours[ip]["times"] = 1
+                    detours[ip]["country"] = country
+    for ip in detours:
+        ip_dict = detours[ip]
+        print(str(ip) + " (" + ip_dict["country"] + "):" + str(ip_dict["times"]))   
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Invalid arguments")
-        print("Right use: [datafile path] [operation]")
-        print("Available operations: plot_success, gather_isps")
+        print("Right use: [datafile path || folder path] [operation]")
+        print("Available operations: plot_success, gather_isps, compare_detours")
     
-    data = read_json(sys.argv[1])
     if sys.argv[2] == "plot_success":
+        data = read_json(sys.argv[1])
         success_data = compute_success(data)
         plot_success_rate(success_data)
     elif sys.argv[2] == "gather_isps":
+        data = read_json(sys.argv[1])
         isps = gather_isps(data)
         write_isps_to_file(isps, sys.argv[1])
+    elif sys.argv[2] == "compare_detours":
+        compare_detours(sys.argv[1])
     else:
         print("Invalid arguments")
-        print("Right use: [datafile path] [operation]")
-        print("Available operations: plot_success, gather_isps")
+        print("Right use: [datafile path || folder path] [operation]")
+        print("Available operations: plot_success, gather_isps, compare_detours")
