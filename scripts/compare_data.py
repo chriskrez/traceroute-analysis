@@ -94,7 +94,7 @@ def compare_detours(folder):
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Invalid arguments")
-        print("Right use: [datafile path || folder path] [operation]")
+        print("Right use: folder_path operation")
         print("Available operations: plot_success, compare_isps, compare_detours")
         exit(0)
     
@@ -110,5 +110,5 @@ if __name__ == '__main__':
         compare_detours(sys.argv[1])
     else:
         print("Invalid arguments")
-        print("Right use: [datafile path || folder path] [operation]")
+        print("Right use: folder_path operation")
         print("Available operations: plot_success, compare_isps, compare_detours")
