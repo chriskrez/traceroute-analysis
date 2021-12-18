@@ -9,15 +9,18 @@ def read_json(filename):
     
     return data
 
-def compute_success(data):
+def compute_success(folder):
     success = {}
-    for record in data:
-        country = record["dest_country"]
-        if record["success"] == "yes":
-            if country in success.keys():
-                success[country] += 1
-            else:
-                success[country] = 1
+    for file in os.listdir(folder):
+        json_path = os.path.join(folder, file)
+        data = read_json(json_path)
+        for record in data:
+            country = record["dest_country"]
+            if record["success"] == "yes" and country != "Canada":
+                if country in success.keys():
+                    success[country] += 1
+                else:
+                    success[country] = 1
     return success
 
 def plot_success_rate(data):
@@ -27,7 +30,7 @@ def plot_success_rate(data):
     plt.xlabel("Destination Countries")
     plt.ylabel("Success rate")
     ax = plt.gca()
-    ax.set_ylim([0, 10])
+    ax.set_ylim([0, 300])
     plt.show()
 
 def compare_isps(folder):
@@ -93,10 +96,11 @@ if __name__ == '__main__':
         print("Invalid arguments")
         print("Right use: [datafile path || folder path] [operation]")
         print("Available operations: plot_success, compare_isps, compare_detours")
+        exit(0)
     
     if sys.argv[2] == "plot_success":
-        data = read_json(sys.argv[1])
-        success_data = compute_success(data)
+        folder = sys.argv[1]
+        success_data = compute_success(folder)
         plot_success_rate(success_data)
     elif sys.argv[2] == "compare_isps":
         isps = compare_isps(sys.argv[1])

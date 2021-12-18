@@ -51,10 +51,15 @@ def generate_map(df):
     fig.show()
 
 if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        print("Invalid arguments")
+        print("Right use: [ip || domain name] origin_country")
+        exit(0)
+
     dest_ip = sys.argv[1] if ipv4.validate_ip(sys.argv[1]) else socket.gethostbyname(sys.argv[1])
-    tracerouteLO = Traceroute(dest_ip, country="LO")
-    hopsLO = tracerouteLO.traceroute()
-    # print_formatted_output(hopsLO)
+    origin = sys.argv[2]
+    traceroute = Traceroute(dest_ip, country=origin)
+    hopsLO = traceroute.traceroute()
 
     dfLO = initialize_dataframe(hopsLO)
     print(dfLO)
